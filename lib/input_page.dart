@@ -81,14 +81,35 @@ class _InputPageState extends State<InputPage> {
                           crossAxisAlignment: CrossAxisAlignment.baseline,
                           textBaseline: TextBaseline.alphabetic,
                           children: <Widget>[
-                            Text(_height.toString(), style: kLabelTextStyleBig,),
-                            Text(' cm', style: kLabelTextStyle,)
+                            Text(
+                              _height.toString(),
+                              style: kLabelTextStyleBig,
+                            ),
+                            Text(
+                              'cm',
+                              style: kLabelTextStyle,
+                            )
                           ],
                         ),
-                        Slider(
-                          value: _height.toDouble(),
-                          min: 120.0,
-                          max: 220.0,
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                              activeTrackColor: kActiveSliderColor,
+                              trackHeight: kSliderTrackHeight,
+                              overlayColor: kSliderOverlayColor,
+                              thumbColor: kSliderThumbColor,
+                              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                              overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0)),
+                          child: Slider(
+                            value: _height.toDouble(),
+                            inactiveColor: kInactiveSliderColor,
+                            onChanged: (double newValue) {
+                              setState(() {
+                                _height = newValue.round();
+                              });
+                            },
+                            min: kHeightMin,
+                            max: kHeightMax,
+                          ),
                         )
                       ],
                     ),

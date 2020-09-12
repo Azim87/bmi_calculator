@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'input_page.dart';
 
-void main() => runApp(BMICalculator());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) => runApp(BMICalculator()));
+}
 
 class BMICalculator extends StatelessWidget {
   @override
@@ -11,8 +16,7 @@ class BMICalculator extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
           primaryColor: Color(0xFF0A0E21),
-          scaffoldBackgroundColor: Color(0xFF0A0E21)
-      ),
+          scaffoldBackgroundColor: Color(0xFF0A0E21)),
       home: InputPage(),
     );
   }
