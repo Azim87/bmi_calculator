@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/gender.dart';
 import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/rounded_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,6 +16,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int _height = 180;
+  int _weight = 60;
+  int _age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -97,8 +100,10 @@ class _InputPageState extends State<InputPage> {
                               trackHeight: kSliderTrackHeight,
                               overlayColor: kSliderOverlayColor,
                               thumbColor: kSliderThumbColor,
-                              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                              overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0)),
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 15.0),
+                              overlayShape:
+                                  RoundSliderOverlayShape(overlayRadius: 30.0)),
                           child: Slider(
                             value: _height.toDouble(),
                             inactiveColor: kInactiveSliderColor,
@@ -122,10 +127,88 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(colour: kActiveCardColor),
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                    cardWidget: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          _weight.toString(),
+                          style: kLabelTextStyleBig,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomRoundButton(
+                              iconData: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  _weight--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            CustomRoundButton(
+                              iconData: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  _weight++;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: kActiveCardColor),
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                    cardWidget: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'AGE',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          _age.toString(),
+                          style: kLabelTextStyleBig,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomRoundButton(
+                              iconData: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  _age--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            CustomRoundButton(
+                              iconData: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  _age++;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
