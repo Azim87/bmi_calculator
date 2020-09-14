@@ -1,12 +1,15 @@
-import 'package:bmi_calculator/gender.dart';
-import 'package:bmi_calculator/reusable_card.dart';
-import 'package:bmi_calculator/rounded_button.dart';
+
+import 'file:///D:/FlutterProjects/bmi_calculator/lib/ui/results_page.dart';
+import 'file:///D:/FlutterProjects/bmi_calculator/lib/components/reusable_card.dart';
+import 'file:///D:/FlutterProjects/bmi_calculator/lib/components/rounded_button.dart';
+import 'package:bmi_calculator/components/gender.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'constants.dart';
-import 'icon_content.dart';
+import '../components/bottom_button.dart';
+import '../constants/constants.dart';
+import '../components/icon_content.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -24,7 +27,7 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "BMI Calculator",
+          'BMI CALCULATOR',
         ),
       ),
       body: Column(
@@ -213,18 +216,13 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            buttonTitle: 'CALCULATE',
             onTap: () {
-
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ResultsPage()));
             },
-            child: Container(
-              child: Text('Calculate'),
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-            ),
-          )
+          ),
         ],
       ),
     );
