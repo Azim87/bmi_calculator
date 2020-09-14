@@ -11,8 +11,8 @@ const kSliderTrackHeight = 2.0;
 const kSliderOverlayColor = Color(0x29EB1555);
 const kSliderThumbColor = Color(0xFFEB1555);
 
-const kLabelTextStyle = TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98));
-const kLabelTextStyleBig = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900);
+const kLabelTextStyle = TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98), fontFamily: "Source Code Pro");
+const kLabelTextStyleBig = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900, fontFamily: 'Source Code Pro');
 
 const kHeightMin = 120.0;
 const kHeightMax = 220.0;
